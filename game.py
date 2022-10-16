@@ -18,3 +18,18 @@ window = win.set_mode ((win_width, win_height))
 
 BLACK = (0, 0, 0)
 window.fill (BLACK)
+
+game = True
+finish = False
+
+clock = time.Clock()
+FPS = 60
+
+while game:
+    for e in event.get():
+        if e.type == QUIT:
+            game = False
+    if finish != True:
+        window.fill (BlACK)
+    display.update ()
+    clock.tick(FPS)         
