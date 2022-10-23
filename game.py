@@ -2,15 +2,34 @@
 from pygame import 8
 
 class GameSprite (sprite.Sprite):
-    def __init__ (self):
-        pass
+    def __init__ (self, palyer_image, p_x, p_y, p_speed, width, height):
+        super.__init__()
+        self.image = trnsform.scale(image.load(player_image),(width, height))
+        self.speed = p_speed
+        self.rect = self.image.get_rect()
+        self.rect.x = p_x
+        self.rect.y = p_y
+        
     def reset (self):
-        pass
+        window.blit(self.image, (self.rect.x, self.rect.y))
+        
 class Player (GameSprite):
     update_right (self):
-        pass
+        keeys = key.get_pressed()
+        if [K_UP] and self.rect.y > 5:
+            self.rect.y -= self.speed
+        if [K_DOWN] and self.rect.x < 420:
+            self.rect.y += self.speed 
     update_left (self):
-        pass
+        keeys = key.get_pressed()
+        if [K_w] and self.rect.y > 5:
+            self.rect.y -= self.speed
+        if [K_s] and self.rect.x < 420:
+            self.rect.y += self.speed
+racket_right = Player("Line.png", 520, 200, 10, 50, 150)
+racket_left = Player("Line.png", 80, 200, 10, 50, 150)
+
+ball = GameSprite("ball.png", 200, 200, 6, 50, 50)
 win_width = 600
 win_height = 500
 
@@ -31,5 +50,11 @@ while game:
             game = False
     if finish != True:
         window.fill (BlACK)
+        racket_right.update_right()
+        racket_left.update_left()
+        racket_right.reset()
+        racket_left.reset()
+        ball.reset()
+        
     display.update ()
     clock.tick(FPS)         
