@@ -1,5 +1,5 @@
 
-from pygame import 8
+from pygame import *
 
 class GameSprite (sprite.Sprite):
     def __init__ (self, palyer_image, p_x, p_y, p_speed, width, height):
