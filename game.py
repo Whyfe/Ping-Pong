@@ -35,14 +35,17 @@ win_height = 500
 
 window = win.set_mode ((win_width, win_height))
 
-BLACK = (0, 0, 0)
-window.fill (BLACK)
+WHITE = (255, 255, 255)
+window.fill (WHITE)
 
 game = True
 finish = False
 
 clock = time.Clock()
 FPS = 60
+
+speed_x = 3
+speed_y = 3
 
 while game:
     for e in event.get():
@@ -52,6 +55,12 @@ while game:
         window.fill (BlACK)
         racket_right.update_right()
         racket_left.update_left()
+        
+        ball.rect.x += speed_x
+        ball.rect.y += speed_y
+        if ball.rect.y > win_height -50 or ball.rect_y < 0:
+            speed_y *= -1
+        
         racket_right.reset()
         racket_left.reset()
         ball.reset()
