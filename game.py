@@ -1,6 +1,8 @@
 
 from pygame import *
-
+font.init()
+lose1 = font.render("Player1 lose, 1, (255, 0, 0))
+font = font.Font(None, 35)
 class GameSprite (sprite.Sprite):
     def __init__ (self, palyer_image, p_x, p_y, p_speed, width, height):
         super.__init__()
